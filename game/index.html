@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CLOCKWORK ASCENT — 60 checkpoints up the Shattered Belfry</title>
+<style>
+  html, body { margin: 0; padding: 0; background: #0b0906; height: 100%; overflow: hidden; }
+  body { display: flex; align-items: center; justify-content: center; font-family: Georgia, 'Times New Roman', serif; }
+  #stage { position: relative; width: 1280px; height: 720px; max-width: 100vw; max-height: 100vh; }
+  canvas { display: block; width: 1280px; height: 720px; background: #14100a; cursor: pointer; }
+  #hud {
+    position: absolute; left: 0; right: 0; top: 0; height: 46px;
+    display: flex; align-items: center; gap: 20px; padding: 0 18px;
+    color: #ffe9b8; font-size: 16px; letter-spacing: .04em;
+    background: linear-gradient(180deg, rgba(8,5,2,.9), rgba(8,5,2,.55) 70%, rgba(8,5,2,0));
+    pointer-events: none; text-shadow: 0 1px 3px #000;
+  }
+  #hud .lab { color: #d8a860; font-size: 11px; text-transform: uppercase; letter-spacing: .18em; margin-right: 6px; }
+  #hud .val { font-weight: bold; }
+  #msg {
+    position: absolute; left: 0; right: 0; bottom: 10px; text-align: center;
+    color: #ffe9b8; font-size: 16px; pointer-events: none; text-shadow: 0 1px 4px #000;
+  }
+</style>
+</head>
+<body>
+<div id="stage">
+  <canvas id="game" width="1280" height="720"></canvas>
+  <div id="hud">
+    <span><span class="lab">Zone</span><span class="val" id="h-zone">–</span></span>
+    <span><span class="lab">Checkpoint</span><span class="val" id="h-cp">0/60</span></span>
+    <span><span class="lab">Time</span><span class="val" id="h-time">0:00</span></span>
+    <span><span class="lab">Deaths</span><span class="val" id="h-deaths">0</span></span>
+    <span><span class="lab">Ticks</span><span class="val" id="h-ticks">0</span></span>
+    <span><span class="lab">Score</span><span class="val" id="h-score">0</span></span>
+  </div>
+  <div id="msg"></div>
+</div>
+<script type="module" src="./src/main.js"></script>
+</body>
+</html>
