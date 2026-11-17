@@ -29,7 +29,7 @@ export function setupShotScene(state, api) {
 
   if (shot === 'climax') {
     api.newRun(7, DIFFICULTIES[1]);
-    claimUpTo(state, 57);
+    claimUpTo(state, 59);
     state.zoneIdx = 5;
     state.zoneName = 'THE WARDEN’S CROWN';
     state.zonesCleared = 5;
@@ -37,21 +37,25 @@ export function setupShotScene(state, api) {
       state.charms.add(id); state.charmOrder.push(id);
     }
     state.aegisReady = true;
-    state.score = 38450; state.deaths = 3; state.falls = 2;
-    state.ticksCollected = 96; state.time = 287; state.zoneTime = 31;
+    state.score = 41230; state.deaths = 3; state.falls = 2;
+    state.ticksCollected = 104; state.time = 301; state.zoneTime = 36;
     state.streak = 4; state.bestStreak = 5; state.parZonesBeaten = 4;
-    const cp = state.world.checkpoints[57];
-    state.player.x = cp.plat.x + 30;
-    state.player.y = cp.plat.y - 168;
-    state.player.vy = -260; state.player.vx = 120; state.player.facing = 1;
+    // The leap for the bell platform: the Warden, the great bell, the
+    // climber and the rising gear-wall all share the frame.
+    const bp = state.world.bellPlat;
+    state.player.x = bp.x + 40;
+    state.player.y = bp.y - 210;
+    state.player.vy = -330; state.player.vx = 90; state.player.facing = 1;
     state.escape.active = true;
-    state.escape.wallY = state.player.y + 470;
+    state.escape.wallY = bp.y + 300;
     state.escape.speed = 60;
-    state.camY = Math.max(0, state.player.y - 250);
-    api.floater(cp.x, cp.y - 190, '+1,000 DEATHLESS ×4', '#ffd873');
-    api.floater(cp.x - 90, cp.y - 120, '+100 CHECKPOINT 57/60', '#ffe9b8');
-    api.banner('ZONE 6 — THE WARDEN’S CROWN', 'the gear-wall rises — ring the top bell!');
+    state.camY = Math.max(0, bp.y - 400);
+    api.floater(bp.x + 130, bp.y - 268, '+1,500 PAR BELL BEATEN', '#8ce8a8');
+    api.floater(bp.x + 330, bp.y - 308, '+1,000 DEATHLESS ×4', '#ffd873');
+    api.banner('THE WARDEN WINDS THE TOWER DOWN', 'the gear-wall rises — ring the top bell!');
     state.fx.banner.t = 0.4;
+    const msg = document.getElementById('msg');
+    if (msg) msg.textContent = '';
     return true;
   }
 

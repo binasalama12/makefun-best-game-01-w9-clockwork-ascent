@@ -480,7 +480,7 @@ function drawPlayHud(ctx, state) {
   const counts = {};
   for (const h of state.world.hazards) if (h.zone === state.zoneIdx) counts[h.kind] = (counts[h.kind] || 0) + 1;
   for (const [k, n] of Object.entries(counts)) {
-    const hz = HAZARDS.find((o) => o.id === k);
+    const hz = HAZARDS.find((o) => o.id === (k === 'phantomstep' ? 'phantom' : k));
     if (hz) { ctx.fillText('  ' + hz.name + ' ×' + n, zx + 12, yy); yy += 15; }
   }
   if (state.zoneIdx < 5) {
@@ -569,7 +569,7 @@ function drawTitle(ctx, state) {
   // Left column: how to play + routes
   ctx.textAlign = 'left';
   ctx.fillStyle = 'rgba(10,6,2,0.85)';
-  rr(ctx, 30, 150, 380, 300, 10); ctx.fill();
+  rr(ctx, 30, 150, 380, 318, 10); ctx.fill();
   ctx.strokeStyle = '#c8a24c'; ctx.lineWidth = 1.5; ctx.stroke();
   ctx.fillStyle = '#ffd873';
   ctx.font = 'bold 16px Georgia, serif';
@@ -600,7 +600,7 @@ function drawTitle(ctx, state) {
 
   // Middle column: bestiary
   ctx.fillStyle = 'rgba(10,6,2,0.85)';
-  rr(ctx, 428, 150, 424, 300, 10); ctx.fill();
+  rr(ctx, 428, 150, 424, 318, 10); ctx.fill();
   ctx.strokeStyle = '#c8a24c'; ctx.stroke();
   ctx.fillStyle = '#ffd873';
   ctx.font = 'bold 16px Georgia, serif';
@@ -618,7 +618,7 @@ function drawTitle(ctx, state) {
 
   // Right column: the eight cog-charms
   ctx.fillStyle = 'rgba(10,6,2,0.85)';
-  rr(ctx, 870, 150, 380, 300, 10); ctx.fill();
+  rr(ctx, 870, 150, 380, 318, 10); ctx.fill();
   ctx.strokeStyle = '#c8a24c'; ctx.stroke();
   ctx.fillStyle = '#ffd873';
   ctx.font = 'bold 16px Georgia, serif';
