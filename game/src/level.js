@@ -73,7 +73,7 @@ export function buildWorld(seed) {
         x: sx - 46, y: y - 30, w: 92, route: 'secret', kind: 'solid', phase: 0, zone, row: i,
       });
       for (let k = -1; k <= 1; k++) {
-        ticks.push({ x: sx + k * 26, y: y - 58, taken: false, value: 1, secret: true });
+        ticks.push({ x: sx + k * 26, y: y - 58, taken: false, value: 1, secret: true, cacheId: i });
       }
     }
 
