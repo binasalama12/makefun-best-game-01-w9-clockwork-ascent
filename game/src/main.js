@@ -373,6 +373,7 @@ canvas.addEventListener('click', (e) => {
 });
 
 // ---- boot + loop ---------------------------------------------------------
+window.__clockwork = state; // dev/playability hook (used by the shot driver)
 state.world = buildWorld(7);
 state.player = makePlayer(614, GROUND_TOP - 38);
 initInput(action);
